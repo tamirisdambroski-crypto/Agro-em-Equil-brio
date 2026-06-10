@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte, Futuro Sustentável</title>
+    <style>
+        /* CONFIGURAÇÕES DE CORES E VARIÁVEIS DO TEMA */
+        :root {
+            --primary-color: #1b4d3e; /* Verde floresta */
+            --secondary-color: #2e7d32; /* Verde agro ativo */
+            --accent-color: #f9a825; /* Amarelo ouro/trigo */
+            --text-color: #333333;
+            --bg-light: #f4f7f5;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* MENU DE NAVEGAÇÃO (HEADER) */
+        header {
+            background-color: var(--primary-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* SEÇÃO HERO (BOAS-VINDAS / APRESENTAÇÃO) */
+        .hero {
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 60px;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--bg-light);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* ESTRUTURA GERAL */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 100px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* GRELHAS (GRID LAYOUTS) */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* COMPONENTES VISUAIS */
+        .content-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            height: 350px;
+            transition: var(--transition);
+        }
+
+        .content-image:hover {
+            transform: scale(1.02);
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .styled-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .styled-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .styled-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* SEÇÃO EXCLUSIVA SISTEMA FAEP */
+        .faep-box {
+            background: linear-gradient(135deg, var(--primary-color), #0d2b22);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .faep-box h2 {
+            color: var(--accent-color);
+        }
+
+        .faep-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .faep-card {
+            background-color: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .faep-card:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .faep-card h3 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVIDADE PARA TELEMÓVEIS */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">🌱 AgroSustentável</a>
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+            <ul class="nav-links">
+                <li><a href="#inicio" class="active">Início</a></li>
+                <li><a href="#agronegocio">O Agronegócio</a></li>
+                <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#faep">Sistema FAEP</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Agro Forte, Futuro Sustentável</h1>
+            <p>"Produzir com responsabilidade é garantir o futuro das próximas gerações."</p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <section id="agronegocio">
+            <h2 class="section-title">🚜 O que é o Agronegócio?</h2>
+            <div class="grid-2">
+                <div>
+                    <p>O agronegócio vai muito além de plantar e colher. Representa toda uma cadeia produtiva essencial que movimenta a economia, gera empregos e garante o sustento de milhões de famílias.</p>
+                    <br>
+                    <h3>Importância para a Alimentação</h3>
+                    <p>O agro é o motor que abastece as mesas do mundo. Garantir a segurança alimentar com qualidade e eficiência é o nosso principal compromisso.</p>
+                    <br>
+                    <h3>Principais Produções do Paraná</h3>
+                    <p>O estado do Paraná consolida-se como uma grande potência agrícola nacional, destacando-se em:</p>
+                    <ul class="styled-list">
+                        <li><strong>Grãos:</strong> Altíssima produtividade na produção de Soja e Milho.</li>
+                        <li><strong>Trigo:</strong> Referência nacional na panificação.</li>
+                        <li><strong>Proteína Animal:</strong> Fortes cadeias de carne suína, avicultura e bacia leiteira.</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad451?auto=format&fit=crop&w=800&q=80" alt="Produção do Agronegócio no Paraná" class="content-image">
+                </div>
+            </div>
+        </section>
+
+        <section id="sustentabilidade">
+            <h2 class="section-title">🌳 Sustentabilidade no Campo</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="card-icon">🌲</span>
+                    <h3>Preservação de Florestas</h3>
+                    <p>Manutenção das Áreas de Preservação Permanente (APPs) e Reserva Legal para a proteção da rica biodiversidade local.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">💧</span>
+                    <h3>Uso Consciente da Água</h3>
+                    <p>Implementação de sistemas inteligentes de irrigação (como o gotejamento) e captação eficiente das águas pluviais.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🌱</span>
+                    <h3>Proteção do Solo</h3>
+                    <p>Uso prático do <strong>plantio direto</strong> e rotação de culturas, mantendo a terra fértil e evitando desgastes e erosões.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tecnologia">
+            <h2 class="section-title">💡 Tecnologia e Inovação</h2>
+            <div class="grid-2">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1592982537447-7440771109a3?auto=format&fit=crop&w=800&q=80" alt="Uso de Drones na Agricultura de Precisão" class="content-image">
+                </div>
+                <div>
+                    <p>A tecnologia moderna atua como o braço direito da sustentabilidade, provando que é viável expandir produções otimizando o uso de insumos naturais.</p>
+                    <br>
+                    <ul class="styled-list">
+                        <li><strong>Drones na Agricultura:</strong> Mapeamento aéreo detalhado para identificar pragas e aplicar recursos cirurgicamente, evitando desperdícios.</li>
+                        <li><strong>Máquinas Modernas:</strong> Tratores e colheitadeiras conectados por telemetria que evitam a compactação excessiva do solo.</li>
+                        <li><strong>Agricultura de Precisão:</strong> Tomada de decisão inteligente baseada em dados gerados por sensores e mapas de GPS.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="faep">
+            <div class="faep-box">
+                <h2>🤝 O Papel do Sistema FAEP/SENAR-PR</h2>
+                <p style="margin-top: 1rem; font-size: 1.1rem;">A Federação da Agricultura do Estado do Paraná (FAEP) atua diretamente no fortalecimento do homem do campo, conectando o produtor às inovações de mercado de forma totalmente sustentável.</p>
+                
+                <div class="faep-grid">
+                    <div class="faep-card">
+                        <h3>🛡️ Defesa de Interesses</h3>
+                        <p>Representação sindical forte para defender direitos políticos, económicos e jurídicos do produtor perante os órgãos reguladores.</p>
+                    </div>
+                    <div class="faep-card">
+                        <h3>🎓 Capacitação Profissional</h3>
+                        <p>Através dos cursos gratuitos do SENAR-PR, ensina na prática novas tecnologias, operação de frotas e metodologias sustentáveis.</p>
+                    </div>
+                    <div class="faep-card">
+                        <h3>📈 Apoio Técnico e Gestão</h3>
+                        <p>Auxílio direto focado em transformar pequenas e médias propriedades rurais em negócios altamente rentáveis e seguros.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AgroForte & Sustentável - Criado para o GitHub Pages</p>
+    </footer>
+
+    <script>
+        // Menu Mobile (Abrir / Fechar)
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar num item no telemóvel
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Ativação automática de cor no menu durante o scroll da página
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
